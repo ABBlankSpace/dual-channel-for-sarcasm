@@ -40,9 +40,9 @@ parser.add_argument('--lr_bert', type=float, default=5e-05)
 parser.add_argument('--multi_dim', type=int, default=20)
 parser.add_argument('--tokenizer', type=str, default='spacy') # nltk, spacy, bert
 
-parser.add_argument('--predict_dir', type=str, default='./senti/')
+parser.add_argument('--predict_dir', type=str, default='./predict/')
 parser.add_argument('--predict', type=int, default=0)
-parser.add_argument('--model_dir', type=str, default='./models/debatev2dualbilstm-v5-c-ce-1-1-pc-32/')
+parser.add_argument('--model_dir', type=str, default='./models/')
 parser.add_argument('--t_sne', type=int, default=0) # together with --predict
 parser.add_argument('--save_model', type=int, default=0)
 
@@ -142,7 +142,7 @@ class mainModel(object):
                 for name in self.dataset_name:
                     loss, dict_eva = evaluate(self.model, self.datamanager, self.data[name])
                     log_value(f'Loss-{name}-all', loss[0], int(step/FLAGS.per_checkpoint))
-                    dict_name = {'senti': 'senti', 'sarcasm': 'sarcasm', 'twitter': 'twitter', 'pair': 'pair', 'literal': 'literal', 'deep': 'deep'}
+                    dict_name = {'sarcasm': 'sarcasm', 'literal': 'literal', 'deep': 'deep'}
                     dict_keys = ['sarcasm', 'literal', 'deep']
                     logging.info(f'In dataset {name}: Loss is {show(loss)}')
                     for i, tmp in enumerate(dict_keys):
@@ -171,8 +171,6 @@ class mainModel(object):
                 loss_step = np.zeros((num_loss, ))
 
             loss_step += train(self.model, self.datamanager, self.data[self.dataset_name[0]]) / FLAGS.per_checkpoint
-
-
 
 if __name__ == '__main__':
     mm = mainModel()

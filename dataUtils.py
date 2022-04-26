@@ -6,7 +6,6 @@ import json
 import numpy as np
 import re
 from nltk import word_tokenize
-from transformers import BertTokenizer
 import spacy
 nlp = spacy.load('en_core_web_sm')
 
@@ -21,7 +20,6 @@ class DataManager(object):
     def __init__(self, FLAGS):
         self.FLAGS = FLAGS
         np.random.seed(FLAGS.seed)
-        self.tokenizer = BertTokenizer.from_pretrained(self.FLAGS.bert_path, do_lower_case=True)
 
     def load_data(self, path, fname):
         f = open('%s%s' % (path, fname), encoding='utf8')
@@ -37,7 +35,7 @@ class DataManager(object):
                 content = [str(token) for token in nlp(content)]
             elif self.FLAGS.tokenizer == 'nltk':
                 content = word_tokenize(content)
-            else:  # bert
+            else:
                 pass
 
             if len(pos) >= len(neg) and sarcasm == 1:
