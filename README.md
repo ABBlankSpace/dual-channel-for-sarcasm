@@ -110,18 +110,23 @@ The official websites for datasets:
 
 ## Citation
 ```
-@article{DBLP:journals/corr/abs-2109-03587,
+@inproceedings{DBLP:conf/naacl/LiuWSMLG22,
   author    = {Yiyi Liu and
                Yequan Wang and
                Aixin Sun and
-               Zheng Zhang and
-               Jiafeng Guo and
-               Xuying Meng},
+               Xuying Meng and
+               Jing Li and
+               Jiafeng Guo},
   title     = {A Dual-Channel Framework for Sarcasm Recognition by Detecting Sentiment
                Conflict},
-  journal   = {CoRR},
-  volume    = {abs/2109.03587},
-  year      = {2021},
-  url       = {https://arxiv.org/abs/2109.03587}
+  booktitle = {Findings of the Association for Computational Linguistics: {NAACL}
+               2022, Seattle, WA, United States, July 10-15, 2022},
+  pages     = {1670--1680},
+  publisher = {Association for Computational Linguistics},
+  year      = {2022},
+  url       = {https://doi.org/10.18653/v1/2022.findings-naacl.126},
+  doi       = {10.18653/v1/2022.findings-naacl.126},
+  biburl    = {https://dblp.org/rec/conf/naacl/LiuWSMLG22.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
 }
 ```
